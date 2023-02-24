@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Marika Mulder">
+    <meta name="description" content="Input for converting different types of units">
+    <meta name="keywords" content="Converter, measurement, unit, weight">
+    <link rel="stylesheet" type="text/css" href="main.css">
+
+    <title>Converter</title>
+</head>
+<body>
+    <script src="scripts/temperature.js"></script>
+    <script src="scripts/metric.js"></script>
+    <script src="scripts/imperial.js"></script>
+    <script src="scripts/mass.js"></script>
+    <script src="scripts/speed.js"></script>
+    <script src="scripts/volume.js"></script>
+    <script src="scripts/binary.js"></script>
+    <div class="covertCard">
+        <h1>Unit Converter</h1>
+        <div class="fullBlock">
+            <select name="convertUnit" id="convertUnit" onchange="changeUnit()">
+                <option value="temperature">Temperature</option>
+                <option value="metric">Length Metric</option>
+                <option value="imperial">Length Imperial</option>
+                <option value="mass">Weight</option>
+                <option value="speed">Speed</option>
+                <option value="volume">Volume</option>
+                <option value="binary">Binary</option>
+            </select>
+            
+            <div id="temperatureUnit" class="surroundBlock" style="display: flex;">
+                <div class="inputblock">
+                    <input type="text" id="tempInput" name="tempInput" value="0" onchange="temperatureOutout()">
+                    <select name="temperatureInput" id="temperatureInput" onchange="sameOutput()">
+                        <option value="celcius">Celcius</option>
+                        <option value="fahrenheit">Fahrenheit</option>
+                        <option value="kelvin">Kelvin</option>
+                    </select>
+                </div>
+                <p>=</p>
+                <div class="inputblock">
+                    <input type="text" id="tempOutput" name="tempOutput" value="32" onchange="temperatureInput()">
+                    <select name="temperatureOutput" id="temperatureOutput" onchange="sameInput()">
+                        <option value="celcius">Celcius</option>
+                        <option value="fahrenheit" selected>Fahrenheit</option>
+                        <option value="kelvin">Kelvin</option>
+                    </select>
+                </div>
+            </div>
+
+            <div id="binaryUnit" class="surroundBlock" style="display: none;">
+                <div class="inputblock">
+                    <input type="number" id="decInput" name="decInput" value="2" onchange="decimalInput()">
+                    <select name="decimalInput" id="decimalInput" onchange="sameOutputBinary()">
+                        <option value="decimal">Decimal</option>
+                        <option value="binary">Binary</option>
+                    </select>
+                </div>
+                <p>=</p>
+                <div class="inputblock">
+                    <input type="number" id="binOutput" name="binOutput" value="10" onchange="binaryInput()">
+                    <select name="binaryOutput" id="binaryOutput" onchange="sameInputBinary()">
+                        <option value="decimal">Decimal</option>
+                        <option value="binary" selected>Binary</option>
+                    </select>
+                </div>
+            </div>
+
+            <div id="metricUnit" class="surroundBlock" style="display: none;">
+                <div class="inputblock">
+                    <input type="number" id="metricInput" name="metricInput" value="1" onchange="metricInput()">
+                    <select name="metricSelectInput" id="metricSelectInput" onchange="sameOutputMetric()">
+                        <option value="kilometer">Kilometer</option>
+                        <option value="meter">Meter</option>
+                        <option value="decimeter">Decimeter</option>
+                        <option value="centimeter">Centimeter</option>
+                        <option value="millimeter">Millimeter</option>
+                    </select>
+                </div>
+                <p>=</p>
+                <div class="inputblock">
+                    <input type="number" id="metricOutput" name="metricOutput" value="1000" onchange="metricOutput()">
+                    <select name="metricSelectOutput" id="metricSelectOutput" onchange="sameInputMetric()">
+                        <option value="kilometer">Kilometer</option>
+                        <option value="meter" selected>Meter</option>
+                        <option value="decimeter">Decimeter</option>
+                        <option value="centimeter">Centimeter</option>
+                        <option value="millimeter">Millimeter</option>
+                    </select>
+                </div>
+            </div>
+
+            <div id="imperialUnit" class="surroundBlock" style="display: none;">
+                <div class="inputblock">
+                    <input type="number" id="imperialInput" name="imperialInput" value="1" onchange="imperialInput()">
+                    <select name="imperialSelectInput" id="imperialSelectInput" onchange="sameOutputImperial()">
+                        <option value="foot">Foot</option>
+                        <option value="inch">Inch</option>
+                        <option value="mile">Mile</option>
+                        <option value="yard">Yard</option>
+                    </select>
+                </div>
+                <p>=</p>
+                <div class="inputblock">
+                    <input type="number" id="imperialOutput" name="imperialOutput" value="12" onchange="imperialOutput()">
+                    <select name="imperialSelectOutput" id="imperialSelectOutput" onchange="sameInputImperial()">
+                        <option value="foot">Foot</option>
+                        <option value="inch" selected>Inch</option>
+                        <option value="mile">Mile</option>
+                        <option value="yard">Yard</option>
+                    </select>
+                </div>
+            </div>
+
+            <div id="massUnit" class="surroundBlock" style="display: none;">
+                <div class="inputblock">
+                    <input type="number" id="massInput" name="massInput" value="1" onchange="massInput()">
+                    <select name="massSelectInput" id="massSelectInput" onchange="sameOutputMass()">
+                        <option value="kilogram">Kilogram</option>
+                        <option value="gram">Gram</option>
+                        <option value="milligram">Milligram</option>
+                        <option value="pound">Pound</option>
+                        <option value="ounce">Ounce</option>
+                        <option value="stone">Stone</option>
+                    </select>
+                </div>
+                <p>=</p>
+                <div class="inputblock">
+                    <input type="number" id="massOutput" name="massOutput" value="1000" onchange="massOutput()">
+                    <select name="massSelectOutput" id="massSelectOutput" onchange="sameInputMass()">
+                        <option value="kilogram">Kilogram</option>
+                        <option value="gram" selected>Gram</option>
+                        <option value="milligram">Milligram</option>
+                        <option value="pound">Pound</option>
+                        <option value="ounce">Ounce</option>
+                        <option value="stone">Stone</option>
+                    </select>
+                </div>
+            </div>
+
+            <div id="speedUnit" class="surroundBlock" style="display: none;">
+                <div class="inputblock">
+                    <input type="number" id="speedInput" name="speedInput" value="1" onchange="speedInput()">
+                    <select name="speedSelectInput" id="speedSelectInput" onchange="sameOutputSpeed()">
+                        <option value="m/s">Meter per second</option>
+                        <option value="km/h">Kilometer per hour</option>
+                        <option value="mi/h">Mile per hour</option>
+                        <option value="ft/s">Foot per second</option>
+                    </select>
+                </div>
+                <p>=</p>
+                <div class="inputblock">
+                    <input type="number" id="speedOutput" name="speedOutput" value="3.6" onchange="speedOutput()">
+                    <select name="speedSelectOutput" id="speedSelectOutput" onchange="sameInputSpeed()">
+                        <option value="m/s">Meter per second</option>
+                        <option value="km/h" selected>Kilometer per hour</option>
+                        <option value="mi/h">Mile per hour</option>
+                        <option value="ft/s">Foot per second</option>
+                    </select>
+                </div>
+            </div>
+
+            <div id="volumeUnit" class="surroundBlock" style="display: none;">
+                <div class="inputblock">
+                    <input type="number" id="volumeInput" name="volumeInput" value="1" onchange="volumeInput()">
+                    <select name="volumeSelectInput" id="volumeSelectInput" onchange="sameOutputVolume()">
+                        <option value="gallon">Gallon</option>
+                        <option value="quart">Quart</option>
+                        <option value="pint">Pint</option>
+                        <option value="cup">Cup</option>
+                        <option value="tablespoon">Tablespoon</option>
+                        <option value="teaspoon">Teaspoon</option>
+                    </select>
+                </div>
+                <p>=</p>
+                <div class="inputblock">
+                    <input type="number" id="volumeOutput" name="volumeOutput" value="4" onchange="volumeOutput()">
+                    <select name="volumeSelectOutput" id="volumeSelectOutput" onchange="sameInputVolume()">
+                        <option value="gallon">Gallon</option>
+                        <option value="quart" selected>Quart</option>
+                        <option value="pint">Pint</option>
+                        <option value="cup">Cup</option>
+                        <option value="tablespoon">Tablespoon</option>
+                        <option value="teaspoon">Teaspoon</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+
+        function changeUnit() {
+            var showTemperature = document.getElementById("temperatureUnit").value;
+            var showBinary = document.getElementById("binaryUnit").value;
+            var showUnit = document.getElementById("convertUnit").value;
+
+            if (showUnit == 'temperature') {
+                document.getElementById("temperatureUnit").style.display = "flex";
+            } else {
+                document.getElementById("temperatureUnit").style.display = "none";
+            }
+
+            if (showUnit == 'binary') {
+                document.getElementById("binaryUnit").style.display = "flex";
+            } else {
+                document.getElementById("binaryUnit").style.display = "none";
+            }
+
+            if (showUnit == 'metric') {
+                document.getElementById("metricUnit").style.display = "flex";
+            } else {
+                document.getElementById("metricUnit").style.display = "none";
+            }
+
+            if (showUnit == 'imperial') {
+                document.getElementById("imperialUnit").style.display = "flex";
+            } else {
+                document.getElementById("imperialUnit").style.display = "none";
+            }
+
+            if (showUnit == 'mass') {
+                document.getElementById("massUnit").style.display = "flex";
+            } else {
+                document.getElementById("massUnit").style.display = "none";
+            }
+
+            if (showUnit == 'speed') {
+                document.getElementById("speedUnit").style.display = "flex";
+            } else {
+                document.getElementById("speedUnit").style.display = "none";
+            }
+
+            if (showUnit == 'volume') {
+                document.getElementById("volumeUnit").style.display = "flex";
+            } else {
+                document.getElementById("volumeUnit").style.display = "none";
+            }
+        }
+
+    </script>
+</body>
+</html>
